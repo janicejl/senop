@@ -1,0 +1,16 @@
+{% include 'layout.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<form action="index.html">
+Search Event:<br>
+<input type="text" name="eventsearch" value="Hack@Brown">
+<br>
+Search Hashtag:<br>
+<input type="text" name="hastagsearch" value="#hackatbrown">
+<br><br>
+<input type="submit" value="Submit">
+</form>
+{% endblock %}
