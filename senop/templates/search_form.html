@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-<form action="index.html">
+<form action="{{ url_for('search') }}" method='POST'>
 Search Event:<br>
 <input type="text" name="eventsearch" value="Hack@Brown">
 <br>
