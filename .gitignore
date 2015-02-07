@@ -57,3 +57,5 @@ target/
 #virtualenv
 venv/
 
+# instance
+instance/

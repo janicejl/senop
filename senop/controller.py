@@ -2,11 +2,15 @@
 
 from . import app
 
-from flask import render_template
+from flask import render_template, request, jsonify
 
-@app.route('/search')
+@app.route('/search', methods=['POST', 'GET'])
 def search_form():
-  return render_template('search_form.html')
+  if request.method == 'GET':
+    return render_template('search_form.html')
+  else: # POST
+    # asf
+    return jsonify('hi')
 
 @app.route('/')
 def homepage():
