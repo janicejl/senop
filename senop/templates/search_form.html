@@ -5,11 +5,8 @@
 
 {% block body %}
 <form action="{{ url_for('search') }}" method='POST'>
-Search Event:<br>
-<input type="text" name="eventsearch" value="Hack@Brown">
-<br>
-Search Hashtag:<br>
-<input type="text" name="hastagsearch" value="#hackatbrown">
+Search:<br>
+<input type="text" name="searchterm" value="Hack@Brown">
 <br><br>
 <input type="submit" value="Submit">
 </form>
