@@ -21,7 +21,7 @@ def search():
 
     sentiment140_results = get_sentiment(sentiment140_queries)
 
-
+    app.logger.debug(sentiment140_results)
 
     return jsonify(results=search_term)
 
