@@ -19,7 +19,6 @@
 }
 
 .before-search {
-	padding:2em;
 	text-align: center;
 }
 
@@ -48,4 +47,8 @@
 .w-after {
 	display: inline-block;
 	float:right;
+}
+
+input {
+	height: 50px;
 }
