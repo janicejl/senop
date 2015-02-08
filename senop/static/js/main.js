@@ -78,7 +78,7 @@ function getResults() {
     		console.log(response);
             update(response);
             graph(response.responseJSON.results.word_count);
-            $('.after-search').display = "inherit";
+            $('.after-search').display = "block";
 		}
 	});
 }
