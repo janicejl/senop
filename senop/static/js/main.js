@@ -15,6 +15,12 @@ function getResults() {
 
 		}
 	});
-	alert(term);
 
 }
+
+$('#searchTerm').keydown(function (event) {
+    var keypressed = event.keyCode || event.which;
+    if (keypressed == 13) {
+        getResults();
+    }
+});
