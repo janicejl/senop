@@ -41,10 +41,11 @@ function update(response){
 			str="";
 		});
 		$("#pos").html(newContent);
-		var href = $("#livefeed").href;
-		href = href.concat(results.search_term);
-		$("#livefeed").href = href;
-		// pBar.aria-valuenow =results.score*100;
+		
+		$('#most-recent-tweet').html(results.recent.text);
+		$('#positive-tweet').html(pos.popular.text);
+		$('#neutral-tweet').html(neu.popular.text);
+		$('#negative-tweet').html(neg.popular.text);
 	} else {
 
 	}
@@ -67,6 +68,55 @@ function getResults() {
     complete: function(response) {
     		console.log(response);
             update(response);
+            graph(response.responseJSON.results.word_count);
 		}
 	});
+}
+
+function graph(results) {
+var color = d3.scale.quantize()
+    .range(["#26262b", "#7c8393", "#d6ccbf"]);
+
+var height = 600;
+var width = 950;
+
+var pack = d3.layout.pack()
+    .sort(null)
+    .size([height, width])
+    .value(function(d) { return d.count * d.count; })
+    .padding(5);
+
+var svg = d3.select(".chart").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+  color.domain(d3.extent(results, function(d) { return d.count; }));
+
+  svg.selectAll("circle")
+      .data(pack.nodes({children: results}).slice(1))
+    .enter().append("circle")
+      .attr("r", function(d) { return d.count*10; })
+      .attr("cx", function(d) { return Math.random() * width; })
+      .attr("cy", function(d) { return Math.random()*height; })
+      .style("fill", function(d) { return color(d.count); })
+    .append("title")
+      .text(function(d) {
+        return d.word
+            + "\ncount: " + d.count
+      });
+
+function type(d) {
+  d.count = +d.count;
+  return d;
+}
+
+var tooltip = d3.select("body")
+ .append("div")
+ .style("position", "absolute")
+ .style("z-index", "10")
+ .style("visibility", "hidden")
+ .text("a simple tooltip");
+
+
+d3.select(self.frameElement).style("height", height + "px");
 }

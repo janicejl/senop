@@ -66,6 +66,10 @@ def search():
     negative_common_words = sorted(negative_word_count.items(),
         key = operator.itemgetter(1), reverse = True)[:app.config['COMMON_COUNT']]
 
+    most_recent_tweet = None
+    if all_tweets:
+      most_recent_tweet = all_tweets[0]
+      most_recent_tweet['polarity'] = rescale_polarity(most_recent_tweet['polarity'])
     positive_tweet = None
     if positive_tweets:
       positive_tweet = sorted(positive_tweets, 
@@ -90,6 +94,7 @@ def search():
     result_output['mood'] = get_sentiment_phrase(scaled_sentiment)
     result_output['word_count'] = common_word_dict_list
     result_output['numresults'] = len(all_tweets)
+    result_output['recent'] = most_recent_tweet
 
     positive_output = {}
     positive_output['common_words'] = dict(positive_common_words)
