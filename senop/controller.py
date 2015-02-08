@@ -2,7 +2,7 @@
 
 from . import app
 from .sentiment_helpers import get_tweets, get_sentiment, calculate_polarity, \
-    count_word_frequency, get_sentiment_phrase
+    count_word_frequency, get_sentiment_phrase, rescale_polarity
 
 from flask import render_template, request, jsonify
 import operator
@@ -56,7 +56,15 @@ def search():
     negative_common_words = sorted(negative_word_count.items(),
         key = operator.itemgetter(1), reverse = True)[:app.config['COMMON_COUNT']]
 
-    positive_tweet = 
+    positive_tweet = sorted(positive_tweets, 
+        key = lambda k: k['fav_count'], reverse = True)[0]
+    positive_tweet['polarity'] = 1
+    neutral_tweet = sorted(neutral_tweets,
+        key = lambda k: k['fav_count'], reverse = True)[0]
+    neutral_tweet['polarity'] = 0
+    negative_tweet = sorted(negative_tweets, 
+        key = lambda k: k['fav_count'], reverse = True)[0]
+    negative_tweet['polarity'] = -1
 
     result_output = {}
     result_output['search_term'] = search_term
@@ -65,12 +73,15 @@ def search():
 
     positive_output = {}
     positive_output['common_words'] = dict(positive_common_words)
+    positive_output['popular'] = positive_tweet
 
     neutral_output = {}
     neutral_output['common_words'] = dict(neutral_common_words)
+    neutral_output['popular'] = neutral_tweet
 
     negative_output = {}
     negative_output['common_words'] = dict(negative_common_words)
+    negative_output['popular'] = negative_tweet
 
     return jsonify(results=result_output, positive=positive_output,
         neutral=neutral_output, negative=negative_output)

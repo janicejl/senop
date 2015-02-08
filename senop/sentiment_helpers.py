@@ -7,6 +7,9 @@ import datetime
 import urllib2,json
 from flask import jsonify
 
+def rescale_polarity(num):
+  return float((num - 2) * 0.5)
+
 def get_sentiment_phrase(sentimentNum):
   if sentimentNum < -0.2:
     return "negative"
