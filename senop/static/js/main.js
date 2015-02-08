@@ -3,7 +3,7 @@ function getResults() {
 	var term = tmp.value;
 	var searchTerm='{"searchTerm": '+ term+'}'; 
 	$.ajax({
-		url:Flask.url_for('search',
+		url:Flask.url_for('search'),
 		dataType : 'json',
 		contentType : 'application/json; charset=UTF-8',
 		data : JSON.stringify(searchTerm),
@@ -11,9 +11,9 @@ function getResults() {
 		//success : onStatusOK,
 		//failure : onStatusError
 		complete: function(response) {
-			if(response['responseJSON'][''])
+			console.log(response);
 
-		})
+		}
 	})
 	alert(term);
 
