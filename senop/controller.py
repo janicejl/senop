@@ -56,15 +56,23 @@ def search():
     negative_common_words = sorted(negative_word_count.items(),
         key = operator.itemgetter(1), reverse = True)[:app.config['COMMON_COUNT']]
 
-    positive_tweet = sorted(positive_tweets, 
+    positive_tweet = None
+    if positive_tweets:
+      positive_tweets = sorted(positive_tweets, 
+          key = lambda k: k['fav_count'], reverse = True)[0]
+      positive_tweet['polarity'] = rescale_polarity(positive_tweet['polarity'])
+
+    neutral_tweet = None
+    if neutral_tweets:
+      neutral_tweet = sorted(neutral_tweets,
         key = lambda k: k['fav_count'], reverse = True)[0]
-    positive_tweet['polarity'] = rescale_polarity(positive_tweet['polarity'])
-    neutral_tweet = sorted(neutral_tweets,
+      neutral_tweet['polarity'] = rescale_polarity(neutral_tweet['polarity'])
+
+    negative_tweet = None
+    if negative_tweets:      
+      negative_tweet = sorted(negative_tweets, 
         key = lambda k: k['fav_count'], reverse = True)[0]
-    neutral_tweet['polarity'] = rescale_polarity(neutral_tweet['polarity'])
-    negative_tweet = sorted(negative_tweets, 
-        key = lambda k: k['fav_count'], reverse = True)[0]
-    negative_tweet['polarity'] = rescale_polarity(negative_tweet['polarity'])
+      negative_tweet['polarity'] = rescale_polarity(negative_tweet['polarity'])
 
     result_output = {}
     result_output['search_term'] = search_term
