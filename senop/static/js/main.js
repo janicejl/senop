@@ -41,7 +41,7 @@ function update(response){
 			str="";
 		});
 		$("#pos").html(newContent);
-
+		
 		$('#most-recent-tweet').html(results.recent.text);
 		$('#positive-tweet').html(pos.popular.text);
 		$('#neutral-tweet').html(neu.popular.text);
@@ -68,6 +68,46 @@ function getResults() {
     complete: function(response) {
     		console.log(response);
             update(response);
+            graph(response.responseJSON.results.word_count);
 		}
 	});
+}
+
+function graph(results) {
+var color = d3.scale.quantize()
+    .range(["#26262b", "#7c8393", "#d6ccbf"]);
+
+var size = 600;
+
+var pack = d3.layout.pack()
+    .sort(null)
+    .size([size, size])
+    .value(function(d) { return d.count * d.count; })
+    .padding(5);
+
+var svg = d3.select(".chart").append("svg")
+    .attr("width", size)
+    .attr("height", size);
+
+  color.domain(d3.extent(results, function(d) { return d.count; }));
+
+  svg.selectAll("circle")
+      .data(pack.nodes({children: results}).slice(1))
+    .enter().append("circle")
+      .attr("r", function(d) { return d.count*10; })
+      .attr("cx", function(d) { return Math.random() * (600); })
+      .attr("cy", function(d) { return Math.random()*600; })
+      .style("fill", function(d) { return color(d.count); })
+    .append("title")
+      .text(function(d) {
+        return d.word
+            + "\ncount: " + d.count
+      });
+
+function type(d) {
+  d.count = +d.count;
+  return d;
+}
+
+d3.select(self.frameElement).style("height", size + "px");
 }
