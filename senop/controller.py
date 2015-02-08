@@ -52,6 +52,13 @@ def search():
     negative_word_count = count_word_frequency(negative_tweets, search_term)
     all_common_word_count = count_word_frequency(all_tweets, search_term)
 
+    common_word_dict_list = []
+    for k,v in all_common_word_count.iteritems():
+      word_pair = {}
+      word_pair['word'] = k
+      word_pair['count'] = v
+      common_word_dict_list.append(word_pair)
+
     positive_common_words = sorted(positive_word_count.items(),
         key = operator.itemgetter(1), reverse = True)[:app.config['COMMON_COUNT']]
     neutral_common_words = sorted(neutral_word_count.items(),
@@ -81,7 +88,7 @@ def search():
     result_output['search_term'] = search_term
     result_output['score'] = scaled_sentiment
     result_output['mood'] = get_sentiment_phrase(scaled_sentiment)
-    result_output['word_count'] = all_common_word_count
+    result_output['word_count'] = common_word_dict_list
     result_output['numresults'] = len(all_tweets)
 
     positive_output = {}
