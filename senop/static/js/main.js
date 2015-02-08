@@ -77,7 +77,7 @@ function getResults() {
 
 function graph(results) {
 var color = d3.scale.quantize()
-    .range(["#26262b", "#7c8393", "#d6ccbf"]);
+    .range(["#7c8393", "#d6ccbf"]);
 
 var height = 600;
 var width = 950;

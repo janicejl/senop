@@ -54,6 +54,7 @@ hr {
 	font-size:80pt;
 	color:#ff7f00;
 	margin-top:-40px;
+	z-index: -1;
 }
 
 .qualifier {
