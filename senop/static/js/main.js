@@ -52,6 +52,13 @@ function update(response){
 
 	}
 
+  // Polling
+  var st = document.getElementById("searchTerm");
+  if (st.value.length > 0) {
+    console.log('start polling.');
+    setTimeout(getResults, 60000);
+  }
+
 }
 
 function getResults() {
