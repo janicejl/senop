@@ -41,11 +41,13 @@ function update(response){
 			str="";
 		});
 		$("#pos").html(newContent);
-		
-		$('#most-recent-tweet').html(results.recent.text);
-		$('#positive-tweet').html(pos.popular.text);
-		$('#neutral-tweet').html(neu.popular.text);
-		$('#negative-tweet').html(neg.popular.text);
+
+		$('#most-recent-tweet').html(results.recent.text.replace(/(http:\/\/[^\s]+)/g, "<a href='$1'>$1</a>"));
+		$('#positive-tweet').html(pos.popular.text.replace(/(http:\/\/[^\s]+)/g, "<a href='$1'>$1</a>"));
+		$('#neutral-tweet').html(neu.popular.text.replace(/(http:\/\/[^\s]+)/g, "<a href='$1'>$1</a>"));
+		$('#negative-tweet').html(neg.popular.text.replace(/(http:\/\/[^\s]+)/g, "<a href='$1'>$1</a>"));
+		$('#number-of-tweets').html(results.numresults);
+		$('#number-of-favorites').html(results.numfavs);
 	} else {
 
 	}

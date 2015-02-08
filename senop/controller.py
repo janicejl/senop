@@ -23,6 +23,10 @@ def search():
 
     app.logger.debug(twitter_results[0])
 
+    num_favorites = 0;
+    for t in twitter_results:
+      num_favorites += t.favorite_count
+
     sentiment140_queries = []
     for t in twitter_results:
       sentiment140_queries.append({
@@ -95,6 +99,7 @@ def search():
     result_output['word_count'] = common_word_dict_list
     result_output['numresults'] = len(all_tweets)
     result_output['recent'] = most_recent_tweet
+    result_output['numfavs'] = num_favorites
 
     positive_output = {}
     positive_output['common_words'] = dict(positive_common_words)
