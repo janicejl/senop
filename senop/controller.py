@@ -23,7 +23,7 @@ def search():
 
     app.logger.debug(sentiment140_results)
 
-    scaled_sentiment = calculate_polarity(sentiment140_queries)
+    scaled_sentiment = calculate_polarity(sentiment140_queries['data'])
     app.logger.debug(scaled_sentiment)
 
     return jsonify(results=search_term)
