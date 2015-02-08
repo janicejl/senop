@@ -214,3 +214,6 @@ em {
     100% {top:0px; opacity: 0;}
 }
 
+#search-result-container {
+	visibility: hidden;
+}

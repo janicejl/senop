@@ -50,12 +50,12 @@ function update(response){
 
 	}
 
+  document.getElementById('search-result-container').style.visibility = 'visible';
+
   // Polling
   var st = document.getElementById("search-term");
-  if (st.value.length > 0) {
     console.log('start polling.');
     setTimeout(getResults, 60000);
-  }
 
 }
 
