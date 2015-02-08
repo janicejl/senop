@@ -1,0 +1,61 @@
+body {
+	font-family:avenir,'lato',sans serif;
+	color:#26262b;
+	font-size:14pt;
+	font-weight:400;
+}
+
+h1 {
+	font-family:avenir,'lato',sans serif;
+	font-weight:900;
+	font-size:40pt;
+}
+
+h2 {
+	color:#ff7f00;
+	font-size:24pt;
+	font-weight:900;
+}
+
+i{
+	font-weight:100;
+	font-style:italic;
+}
+
+hr {
+	border-color:#7c8393;
+	size:10px;
+	width:30%;
+}
+
+.words{
+	letter-spacing:2px;
+	text-transform: uppercase;
+	font-size;24pt;
+}
+
+.implink{
+	text-transform: uppercase;
+	color:#7c8393;
+	font-size: 14pt;
+}
+
+.search {
+	color:#7c8393;
+	font-weight:900;
+}
+
+.number {
+	font-family:avenir,'lato',sans serif;
+	font-weight:900;
+	font-size:80pt;
+	color:#ff7f00;
+	margin-top:-40px;
+}
+
+.qualifier {
+	font-family:avenir,'lato',sans serif;
+	font-weight:900;
+	font-size:40pt;
+	color:#7c8393;
+}
