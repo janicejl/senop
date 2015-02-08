@@ -52,13 +52,13 @@ def search():
     result_output['mood'] = get_sentiment_phrase(scaled_sentiment)
 
     positive_output = {}
-    positive_output['common_words'] = positive_common_words
+    positive_output['common_words'] = dict(positive_common_words)
 
     neutral_output = {}
-    neutral_output['common_words'] = neutral_common_words
+    neutral_output['common_words'] = dict(neutral_common_words)
 
     negative_output = {}
-    negative_output['common_words'] = negative_common_words
+    negative_output['common_words'] = dict(negative_common_words)
 
     return jsonify(results=result_output, positive=positive_output,
         neutral=neutral_output, negative=negative_output)
