@@ -41,7 +41,9 @@ function update(response){
 			str="";
 		});
 		$("#pos").html(newContent);
-
+		var href = $("#livefeed").href;
+		href = href.concat(results.search_term);
+		$("#livefeed").href = href;
 		// pBar.aria-valuenow =results.score*100;
 	} else {
 
