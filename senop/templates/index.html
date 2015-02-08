@@ -19,51 +19,59 @@
 		    </form>
 		</div>
 	<div class="after-search">
-		<div class="row">
-		<h1 >You Searched for : </h1>
-		</div>
-		<div class="sentiment-container">
+		<div class="container">
 			<div class="row">
-				<div class="words w-before col-md-2">
-					<span>Term <br></span>
-					<span>Next Term</span>
-				</div>
-				<div class="col-md-8">
-					<div class="progress custom-progress">
-					    <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-					        <span class="sr-only">60% Complete</span>
-					    </div>
+			<h1 >You Searched for : </h1>
+			</div>
+			<div class="sentiment-container">
+				<div class="row">
+					<div class="words w-before col-md-2">
+						<span>Term <br></span>
+						<span>Next Term</span>
 					</div>
-				</div>
-				<div class="words w-after text-right col-md-2">
-					<span>Term<br></span>
-					<span>Next Term</span>
+					<div class="col-md-8">
+						<div class="progress custom-progress">
+						    <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+						        <span class="sr-only">60% Complete</span>
+						    </div>
+						</div>
+					</div>
+					<div class="words w-after text-right col-md-2">
+						<span>Term<br></span>
+						<span>Next Term</span>
+					</div>
 				</div>
 			</div>
 		</div>
-
-		  	<div class="container-fluid">
+		<span class="col-md-2"></span>
+<div class="col-md-8">
   	<div class="row">
-  		<div class="col-md-5">
- 			<div class="col-md-1"><img src="/senop/static/socialmedia.png" class="img-responsive"></div>
- 			<div class="col-md-3">SOCIAL MEDIA <i>- Twitter or Facebook</i></div>
- 		</div>
- 		<div class="col-md-2">.col-md-1</div>
- 		<div class="col-md-5">
- 			<div class="col-md-1"><img src="/senop/static/news.png" class="img-responsive"></div>
+  		<div class="col-md-6">
+ 			<div class="col-md-2"><img src="{{ url_for('static', filename='img/socialmedia.png') }}" class="img-responsive"></div>
+ 				<ul>
+ 					<li>Story 1 lorem ipsum dolor sit amet.</li>
+ 					<li>Story 2</li>
+ 				</ul>
+ 			</div>
+ 		<div class="col-md-6">
+ 			<div class="col-md-2"><img src="{{ url_for('static', filename='img/news.png') }}" class="img-responsive"></div>
  			<div class="col-md-3">NEWSFEED</div>
  		</div>
 	</div>
-
 	<div class="row">
- 		<div class="col-md-1"><img src="..." class="img-responsive"></div>
- 		<div class="col-md-2">SOCIAL MEDIA <i>- Twitter or Facebook</i></div>
- 		<div class="col-md-1">.col-md-1</div>
- 		<div class="col-md-1"><img src="..." class="img-responsive"></div>
- 		<div class="col-md-2">NEWSFEED</div>
- 		<div class="col-md-1">.col-md-1</div>
- 		<div class="col-md-1"><img src="..." class="img-responsive"></div>
- 		<div class="col-md-3">PROBLEMS</div>
+
+		<div class="col-md-3">
+			<div class="col-md-4"><img class="img-responsive" src="{{ url_for('static', filename='img/negative.png') }}"></div>
+		</div>
+	<div class="col-md-1"></div>	
+	<div class="col-md-3">
+			<div class="col-md-4"><img class="img-responsive" src="{{ url_for('static', filename='img/neutral.png') }}"></div>
+		</div>
+	<div class="col-md-1"></div>	
+	<div class="col-md-3">
+			<div class="col-md-4"><img class="img-responsive" src="{{ url_for('static', filename='img/positive.png') }}"></div>
+		</div>		
+	<div class="col-md-1"></div>
 	</div>
 
 	<div class="row">
@@ -72,19 +80,20 @@
 	</div>
 
 	<div class="row">
+		<div class="col-md-1"></div>
  		<div class="col-md-3">
- 			<img src="/senop/static/img/amountofdata.png" class="img-responsive">
+ 			<img src="{{ url_for('static', filename='img/amountofdata.png') }}" class="number-img img-responsive">
  			<span class="number">NUMBER</span>
  			<span class="qualifier">Qualifier</span>
  		</div>
  		<div class="col-md-1"></div>
  		<div class="col-md-3">
- 			<img src="/senop/static/img/people.png" class="img-responsive">
+ 			<img src="{{ url_for('static', filename='img/people.png') }}" class="number-img img-responsive">
  			<span class="number">NUMBER</span>
  			<span class="qualifier">Qualifier</span>
  		</div>
  		<div class="col-md-1"></div>
- 		<div class="col-md-3"><img src="/senop/static/img/amountofdata.png" class="img-responsive">
+ 		<div class="col-md-3"><img src="{{ url_for('static', filename='img/amountofdata.png') }}" class="number-img img-responsive">
  			<span class="number">NUMBER</span>
  			<span class="qualifier">Qualifier</span></div>
  	</div>

@@ -29,6 +29,9 @@ hr {
 	width:30%;
 }
 
+li {
+	list-style-type: none;
+}
 .words{
 	letter-spacing:2px;
 	text-transform: uppercase;
@@ -49,14 +52,18 @@ hr {
 .number {
 	font-family:avenir,'lato',sans serif;
 	font-weight:900;
-	font-size:80pt;
+	font-size:40pt;
 	color:#ff7f00;
 	margin-top:-40px;
+}
+
+.number-img {
+	margin-bottom: -150px;
 }
 
 .qualifier {
 	font-family:avenir,'lato',sans serif;
 	font-weight:900;
-	font-size:40pt;
+	font-size:20pt;
 	color:#7c8393;
 }
