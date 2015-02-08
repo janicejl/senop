@@ -56,3 +56,11 @@ def get_sentiment(tweets):
 
   return response_data
 
+def calculate_polarity(sentiment_result):
+  polarity = 0
+  return polarity
+
+def count_word_frequency(tweet_list):
+  word_count = {}
+  return word_count
+

@@ -23,6 +23,9 @@ def search():
 
     app.logger.debug(sentiment140_results)
 
+    scaled_sentiment = calculate_polarity(sentiment140_queries)
+    app.logger.debug(scaled_sentiment)
+
     return jsonify(results=search_term)
 
 @app.route('/')
