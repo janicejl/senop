@@ -12,7 +12,11 @@ def search():
   if request.method == 'GET':
     return render_template('search_form.html')
   else: # POST
-    search_term = request.form['searchterm']
+    json_data = request.get_json()
+    if json_data:
+      search_term = json_data.get('searchTerm')
+    else: # remove when removing get.
+      search_term = request.form['searchterm']
     app.logger.debug('Search Term: ' + search_term)
 
     twitter_results = get_tweets(search_term)
