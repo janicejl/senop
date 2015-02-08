@@ -12,7 +12,7 @@
 		   <form role="form search">
 			  <div class="form-group col-md-12 rounded">
 		       <div class="input-group rounded">
-			      <input type="text" id="searchTerm" class="form-control rounded">
+			      <input type="text" id="searchTerm" class="form-control rounded" onkeydown="checkEnter()">
 			      <span class="input-group-btn">
 			        <button class="btn btn-default rounded" type="button" onclick="getResults()"><span class="glyphicon glyphicon-search"></span></button>
 			      </span>
@@ -34,8 +34,8 @@
 					</div>
 					<div class="col-md-8">
 						<div class="progress rounded custom-progress">
-						    <div class="progress-bar rounded progress-bar-custom" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-						        <span class="sr-only">60% Complete</span>
+						    <div class="progress-bar rounded progress-bar-custom" id="mood" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+						        <span class="sr-only"></span>
 						    </div>
 						</div>
 					</div>
