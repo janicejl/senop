@@ -41,12 +41,14 @@
 
 .w-before {
 	float:left;
+	text-align: right;
 	display: inline-block;
 }
 
 .w-after {
 	display: inline-block;
 	float:right;
+	text-align: left;
 }
 
 input {

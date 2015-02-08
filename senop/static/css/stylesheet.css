@@ -32,6 +32,7 @@ hr {
 li {
 	list-style-type: none;
 }
+
 .words{
 	letter-spacing:2px;
 	text-transform: uppercase;
@@ -49,6 +50,10 @@ li {
 	font-weight:900;
 }
 
+.filler {
+	padding: 2em;
+}
+
 .number {
 	font-family:avenir,'lato',sans serif;
 	font-weight:900;
@@ -58,7 +63,7 @@ li {
 }
 
 .number-img {
-	margin-bottom: -150px;
+	margin-bottom: -40%;
 }
 
 .qualifier {
@@ -66,4 +71,68 @@ li {
 	font-weight:900;
 	font-size:20pt;
 	color:#7c8393;
+}
+
+.custom-progress {
+		background: rgba(245, 245, 245, 1); 
+		border: 0px solid;
+		border-radius: 50px; 
+		height: 50px;
+	}
+
+.progress-bar-custom {
+	background: #ff7f00;
+	border-radius: 50px;
+	display: inline-block;
+	position: relative;
+}
+
+.sentiment-container {
+	padding:2em;
+}
+.panel {
+	margin-top: 2em;
+}
+
+.before-search {
+	padding:2em;
+	text-align: center;
+}
+
+.after-search {
+	padding:2em;
+	/*display:none;*/
+}
+
+.title {
+	text-align:center;
+}
+
+.rounded {
+	border-radius: 20px;
+}
+
+.words {
+	display: inline-block;
+}
+
+.w-before {
+	float:left;
+	text-align: right;
+	display: inline-block;
+}
+
+.w-after {
+	display: inline-block;
+	float:right;
+	text-align: left;
+}
+
+input {
+	height: 50px;
+}
+
+li {
+	padding-left: -2em;
+	list-style-type: none;
 }
