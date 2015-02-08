@@ -156,6 +156,10 @@ li {
 	margin-top:-1em;
 }
 
+.explanation {
+	visibility: hidden;
+}
+
 input {
 	height: 50px;
 }
