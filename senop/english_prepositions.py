@@ -148,7 +148,8 @@ prepositions = [
 "right",
 "hear",
 "during",
-"onto"
+"onto",
+"is"
 ]
 
 
