@@ -1,7 +1,7 @@
 function getResults() {
 	var tmp = document.getElementById("searchTerm");
 	var term = tmp.value;
-	var searchTerm='{"searchTerm": '+ term+'}'; 
+	var searchTerm="{'searchTerm': '"+term+"'}"; 
 	$.ajax({
 		url:Flask.url_for('search'),
 		dataType : 'json',
@@ -14,7 +14,7 @@ function getResults() {
 			console.log(response);
 
 		}
-	})
+	});
 	alert(term);
 
 }
