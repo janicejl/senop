@@ -8,6 +8,15 @@
 
 {% block body %}
 <div class="container-fluid">
+	<div class="row filler"><div class="col-md-12"></div></div>
+	<div class="row">
+		<div class="col-md-5"></div>
+		<div class="col-md-2">
+			<img src="{{ url_for('static', filename='img/logo.png') }}" class="img-responsive">
+		</div>
+		<div class="col-md-5"></div>
+	</div>
+	<div class="row fill2"><div class="col-md-12"></div></div>
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="before-search col-md-8">
@@ -121,13 +130,13 @@
  		<div class="col-md-3">
  			<img src="{{ url_for('static', filename='img/amountofdata.png') }}" class="number-img img-responsive">
  			<span class="number">1234</span>
- 			<span class="qualifier">Number of Posts</span>
+ 			<span class="qualifier"># of Posts</span>
  		</div>
  		<div class="col-md-2"></div>
  		<div class="col-md-3">
  			<img src="{{ url_for('static', filename='img/people.png') }}" class="number-img img-responsive">
  			<span class="number">NUMBER</span>
- 			<span class="qualifier">Qualifier</span>
+ 			<span class="qualifier"># of Favorites</span>
  		</div>
  		<div class="col-md-2"></div>
  	</div>
