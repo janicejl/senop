@@ -119,13 +119,6 @@ function type(d) {
   return d;
 }
 
-var tooltip = d3.select("body")
- .append("div")
- .style("position", "absolute")
- .style("z-index", "10")
- .style("visibility", "hidden")
- .text("a simple tooltip");
-
 
 d3.select(self.frameElement).style("height", height + "px");
 }
