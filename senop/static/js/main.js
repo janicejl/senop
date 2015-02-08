@@ -11,16 +11,37 @@ function checkEnter() {
 
 function update(response){
 	var results = response.responseJSON.results;
+	var neg = response.responseJSON.negative;
+	var pos = response.responseJSON.positive;
+	var neu = response.responseJSON.neutral;
+
 	console.log(results);
 	var pBar = document.getElementById("mood");
 	if (results.score > 0) {
 		var valeur = results.score*100;
 		$('.progress-bar').css('width', valeur+'%').attr('aria-valuenow', valeur);
-		var newContent = "";
-		results.forEach() {
 
-		} 
-		$('.w-before').innerHTML
+		$('.orange').html(results.search_term);
+
+		var newContent = "";
+		$.each(neg.common_words,function(word) {
+			// console.log(word);
+			var str = "<span>"+word+"<br></span>"
+			newContent = newContent.concat(str);
+			console.log(newContent);
+			str="";
+		});
+		$("#neg").html(newContent);
+
+		newContent = "";
+		$.each(pos.common_words,function(word) {
+			// console.log(word);
+			var str = "<span>"+word+"<br></span>"
+			newContent = newContent.concat(str);
+			str="";
+		});
+		$("#pos").html(newContent);
+
 		// pBar.aria-valuenow =results.score*100;
 	} else {
 
