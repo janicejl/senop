@@ -73,53 +73,40 @@ function getResults() {
 }
 
 function graph(results) {
-var diameter = 960,
-    format = d3.format(",d"),
-    color = d3.scale.category20c();
+var color = d3.scale.quantize()
+    .range(["#26262b", "#7c8393", "#d6ccbf"]);
 
-var bubble = d3.layout.pack()
+var size = 600;
+
+var pack = d3.layout.pack()
     .sort(null)
-    .size([diameter, diameter])
-    .padding(1.5);
+    .size([size, size])
+    .value(function(d) { return d.count * d.count; })
+    .padding(5);
 
-var svg = d3.select("body").append("svg")
-    .attr("width", diameter)
-    .attr("height", diameter)
-    .attr("class", "bubble");
+var svg = d3.select(".chart").append("svg")
+    .attr("width", size)
+    .attr("height", size);
 
-d3.json(results, function(error, root) {
-  var node = svg.selectAll(".word")
-      .data(bubble.nodes(classes(root))
-      .filter(function(d) { return !d.children; }))
-    .enter().append("g")
-      .attr("class", "node")
-      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+  color.domain(d3.extent(results, function(d) { return d.count; }));
 
-  node.append("title")
-      .text(function(d) { return d.className + ": " + format(d.value); });
+  svg.selectAll("circle")
+      .data(pack.nodes({children: results}).slice(1))
+    .enter().append("circle")
+      .attr("r", function(d) { return d.count*10; })
+      .attr("cx", function(d) { return Math.random() * (600); })
+      .attr("cy", function(d) { return Math.random()*600; })
+      .style("fill", function(d) { return color(d.count); })
+    .append("title")
+      .text(function(d) {
+        return d.word
+            + "\ncount: " + d.count
+      });
 
-  node.append("circle")
-      .attr("r", function(d) { return d.r; })
-      .style("fill", function(d) { return color(d.packageName); });
-
-  node.append("text")
-      .attr("dy", ".3em")
-      .style("text-anchor", "middle")
-      .text(function(d) { return d.className.substring(0, d.r / 3); });
-});
-
-// Returns a flattened hierarchy containing all leaf nodes under the root.
-function classes(root) {
-  var classes = [];
-
-  function recurse(name, node) {
-    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-    else classes.push({packageName: name, className: node.word, value: node.count});
-  }
-
-  recurse(null, root);
-  return {children: classes};
+function type(d) {
+  d.count = +d.count;
+  return d;
 }
 
-d3.select(self.frameElement).style("height", diameter + "px");
+d3.select(self.frameElement).style("height", size + "px");
 }
