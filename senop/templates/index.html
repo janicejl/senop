@@ -70,7 +70,7 @@
  		</div>
  		<div class="col-md-6 extra">
  			<hr>
- 			<a class="twitter-timeline" height="200px" data-chrome="noheader transparent" id="liveFeed" href="https://twitter.com/hashtag/hackmit" data-widget-id="">#hackatbrown Tweets</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+ 			<div id="most-recent-tweet"></div>
  		</div>
  	</div>
 
@@ -82,7 +82,7 @@
 		</div>
 		<div class="col-md-2 extra">
 			<hr>
-			POSITIVES
+			POSITIVES 
 		</div>
 		<div class="col-md-2 icon extra">
 			<img class="img-responsive" src="{{ url_for('static', filename='img/neutral.png') }}">
@@ -99,6 +99,17 @@
 			NEGATIVES
 		</div>
 	</div>
+  <div class="row">
+    <div class="col-md-4">
+    <div id='positive-tweet'></div>
+    </div>
+    <div class="col-md-4">
+    <div id="neutral-tweet"></div>
+    </div>
+    <div class="col-md-4">
+    <div id="negative-tweet"></div>
+    </div>
+  </div>
 
 	<div class="row filler"><div class="col-md-12"></div></div>
 
