@@ -1,7 +1,7 @@
 body {
 	font-family:avenir,'lato',sans serif;
 	color:#26262b;
-	font-size:14pt;
+	font-size:12pt;
 	font-weight:400;
 	background-color:#eaeaea;
 }
@@ -10,6 +10,11 @@ h1 {
 	font-family:avenir,'lato',sans serif;
 	font-weight:900;
 	font-size:40pt;
+	text-align: center;
+	width:90%;
+	margin-left:auto;
+	margin-right: auto;
+	padding-bottom:3em;
 }
 
 h2 {
@@ -25,8 +30,10 @@ i{
 
 hr {
 	border-color:#7c8393;
-	size:10px;
-	width:30%;
+	size:8px;
+	border-width:8px;
+	width:40%;
+	margin-left:-5%;
 }
 
 li {
@@ -52,6 +59,7 @@ li {
 
 .filler {
 	padding: 2em;
+	padding-bottom:5em;
 }
 
 .number {
@@ -88,7 +96,8 @@ li {
 }
 
 .sentiment-container {
-	padding:2em;
+	padding:0em;
+	padding-bottom:15%;
 }
 .panel {
 	margin-top: 2em;
@@ -100,7 +109,7 @@ li {
 }
 
 .after-search {
-	padding:2em;
+	padding:4em;
 	/*display:none;*/
 }
 
@@ -120,12 +129,30 @@ li {
 	float:left;
 	text-align: right;
 	display: inline-block;
+	font-weight:900;
 }
 
 .w-after {
 	display: inline-block;
 	float:right;
 	text-align: left;
+	font-weight:900;
+}
+
+.big {
+	width:80% !important;
+}
+
+.extra {
+	padding-bottom:4em;
+}
+
+.orange {
+	color:#ff7f00;
+}
+
+.icon{
+	margin-top:-1em;
 }
 
 input {
@@ -133,6 +160,10 @@ input {
 }
 
 li {
-	padding-left: -2em;
+	margin-left: -2em;
 	list-style-type: none;
+}
+
+em {
+	font-weight:100;
 }
