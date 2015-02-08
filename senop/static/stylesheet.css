@@ -17,9 +17,15 @@ h2 {
 	font-weight:900;
 }
 
-.descrip{
+i{
 	font-weight:100;
 	font-style:italic;
+}
+
+hr {
+	border-color:#7c8393;
+	size:10px;
+	width:30%;
 }
 
 .words{
@@ -44,6 +50,7 @@ h2 {
 	font-weight:900;
 	font-size:80pt;
 	color:#ff7f00;
+	margin-top:-40px;
 }
 
 .qualifier {
