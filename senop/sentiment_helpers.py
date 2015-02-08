@@ -57,12 +57,12 @@ def get_sentiment(tweets):
   return response_data
 
 def calculate_polarity(sentiment_result):
-  polarity = 0
-
+  polarity = 0.0
+  numTweets = len(sentiment_result)
   for r in sentiment_result:
-    r['polarity']
-
-  return polarity
+    polarity+=r['polarity']
+  polarity = float(polarity/numTweets)-2  
+  return float(polarity*0.5)
 
 def count_word_frequency(tweet_list):
   word_count = {}
