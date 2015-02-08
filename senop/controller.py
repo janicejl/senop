@@ -21,9 +21,15 @@ def search():
 
     twitter_results = get_tweets(search_term)
 
+    app.logger.debug(twitter_results[0])
+
     sentiment140_queries = []
     for t in twitter_results:
-      sentiment140_queries.append({'text': t.text});
+      sentiment140_queries.append({
+        'text': t.text,
+        'twitid': t.id,
+        'fav_count': t.favorite_count
+      });
 
     sentiment140_results = get_sentiment(sentiment140_queries)
 
@@ -33,11 +39,11 @@ def search():
     app.logger.debug(scaled_sentiment)
 
     positive_tweets = \
-        [r['text'] for r in sentiment140_results['data'] if r['polarity'] == 4]
+        [r for r in sentiment140_results['data'] if r['polarity'] == 4]
     neutral_tweets = \
-        [r['text'] for r in sentiment140_results['data'] if r['polarity'] == 2]
+        [r for r in sentiment140_results['data'] if r['polarity'] == 2]
     negative_tweets = \
-        [r['text'] for r in sentiment140_results['data'] if r['polarity'] == 0]
+        [r for r in sentiment140_results['data'] if r['polarity'] == 0]
 
     positive_word_count = count_word_frequency(positive_tweets, search_term)
     neutral_word_count = count_word_frequency(neutral_tweets, search_term)
@@ -49,6 +55,8 @@ def search():
         key = operator.itemgetter(1), reverse = True)[:app.config['COMMON_COUNT']]
     negative_common_words = sorted(negative_word_count.items(),
         key = operator.itemgetter(1), reverse = True)[:app.config['COMMON_COUNT']]
+
+    positive_tweet = 
 
     result_output = {}
     result_output['search_term'] = search_term
