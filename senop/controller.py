@@ -58,7 +58,7 @@ def search():
 
     positive_tweet = None
     if positive_tweets:
-      positive_tweets = sorted(positive_tweets, 
+      positive_tweet = sorted(positive_tweets, 
           key = lambda k: k['fav_count'], reverse = True)[0]
       positive_tweet['polarity'] = rescale_polarity(positive_tweet['polarity'])
 
