@@ -1,0 +1,59 @@
+.custom-progress {
+		background: rgba(245, 245, 245, 1); 
+		border: 0px solid 	rgba(ff7f00;; 
+		border-radius: 50px; 
+		height: 50px;
+	}
+.progress-bar-custom {
+	background: rgba(66, 139, 202, 1);
+	border-radius: 50px;
+	display: inline-block;
+	position: relative;
+}
+
+.sentiment-container {
+	padding:2em;
+}
+.panel {
+	margin-top: 2em;
+}
+
+.before-search {
+	text-align: center;
+}
+
+.after-search {
+	padding:2em;
+	/*display:none;*/
+}
+
+.title {
+	text-align:center;
+}
+
+.rounded {
+	border-radius: 20px;
+}
+
+.words {
+	display: inline-block;
+}
+
+.w-before {
+	float:left;
+	display: inline-block;
+}
+
+.w-after {
+	display: inline-block;
+	float:right;
+}
+
+input {
+	height: 50px;
+}
+
+li {
+	padding-left: -2em;
+	list-style-type: none;
+}

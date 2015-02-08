@@ -6,4 +6,5 @@ class BaseConfiguration(object):
   TWITTER_KEY = ''
   TWITTER_SECRET = ''
   MAX_TWEETS = 100
+  COMMON_COUNT = 5
 

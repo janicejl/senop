@@ -1,33 +1,19 @@
 # sentiment_helpers.py
 
 from . import app, twapi
+from .english_prepositions import prepositions
 import tweepy
 import datetime
 import urllib2,json
 from flask import jsonify
 
-class TwitterSen:
-  def __init__(self,sentiment=None, sentimentNum=None):
-    self.sentiment = sentiment
-    self.sentimentNum = sentimentNum
-    description = "This holds if the sentiment of a tweet is positive, negative or netural, along with a number showing intensity"
-
-  @property
-  def sentiment(self):
-    return self.__sentiment
-
-  @property
-  def sentimentNum(self):
-    return self.__sentimentNum
-
-  @sentiment.setter
-  def sentiment(self, sentimentNum):
-    if sentimentNum < -0.2:
-      self.__sentiment = "negative"
-    elif sentimentNum > 0.2:
-      self.__sentiment = "positive"
-    else:
-      self.__sentiment = "neutral"
+def get_sentiment_phrase(sentimentNum):
+  if sentimentNum < -0.2:
+    return "negative"
+  elif sentimentNum > 0.2:
+    return "positive"
+  else:
+    return "neutral"
 
 def get_tweets(search_term):
   # since 1 week ago
@@ -76,9 +62,11 @@ def count_word_frequency(tweet_list, search_term=None):
         continue
       if word.startswith('@') or word.startswith('http'):
         continue
-      if search_term and word.lower() == search_term.lower():
-        continue
       word_lower = word.lower()
+      if search_term and word_lower == search_term.lower():
+        continue
+      if word_lower in prepositions:
+        continue
       word_count[word_lower] = word_count.get(word_lower, 0) + 1
   return word_count
 

@@ -2,9 +2,10 @@
 
 from . import app
 from .sentiment_helpers import get_tweets, get_sentiment, calculate_polarity, \
-    count_word_frequency
+    count_word_frequency, get_sentiment_phrase
 
 from flask import render_template, request, jsonify
+import operator
 
 @app.route('/search', methods=['POST', 'GET'])
 def search():
@@ -38,9 +39,29 @@ def search():
     neutral_word_count = count_word_frequency(neutral_tweets, search_term)
     negative_word_count = count_word_frequency(negative_tweets, search_term)
 
-    app.logger.debug(positive_word_count)
+    positive_common_words = sorted(positive_word_count.items(),
+        key = operator.itemgetter(1), reverse = True)[:app.config['COMMON_COUNT']]
+    neutral_common_words = sorted(neutral_word_count.items(),
+        key = operator.itemgetter(1), reverse = True)[:app.config['COMMON_COUNT']]
+    negative_common_words = sorted(negative_word_count.items(),
+        key = operator.itemgetter(1), reverse = True)[:app.config['COMMON_COUNT']]
 
-    return jsonify(results=search_term)
+    result_output = {}
+    result_output['search_term'] = search_term
+    result_output['score'] = scaled_sentiment
+    result_output['mood'] = get_sentiment_phrase(scaled_sentiment)
+
+    positive_output = {}
+    positive_output['common_words'] = positive_common_words
+
+    neutral_output = {}
+    neutral_output['common_words'] = neutral_common_words
+
+    negative_output = {}
+    negative_output['common_words'] = negative_common_words
+
+    return jsonify(results=result_output, positive=positive_output,
+        neutral=neutral_output, negative=negative_output)
 
 @app.route('/')
 def homepage():
