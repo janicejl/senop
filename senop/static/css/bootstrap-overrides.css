@@ -1,0 +1,36 @@
+.custom-progress {
+		background: rgba(245, 245, 245, 1); 
+		border: 0px solid rgba(245, 245, 245, 1); 
+		border-radius: 50px; 
+		height: 50px;
+	}
+.progress-bar-custom {
+	background: rgba(66, 139, 202, 1);
+	border-radius: 50px;
+	transition: width 5s ease;
+}
+
+.sentiment-container {
+	padding:2em;
+}
+.panel {
+	margin-top: 2em;
+}
+
+button {
+	display: inline-block;
+}
+.before-search {
+	padding:2em;
+	text-align: center;
+	display:none;
+}
+
+.after-search {
+	padding:2em;
+	/*display:none;*/
+}
+
+.title {
+	text-align:center;
+}
