@@ -7,7 +7,8 @@
 .progress-bar-custom {
 	background: rgba(66, 139, 202, 1);
 	border-radius: 50px;
-	transition: width 5s ease;
+	display: inline-block;
+	position: relative;
 }
 
 .sentiment-container {
@@ -17,13 +18,9 @@
 	margin-top: 2em;
 }
 
-button {
-	display: inline-block;
-}
 .before-search {
 	padding:2em;
 	text-align: center;
-	display:none;
 }
 
 .after-search {
@@ -33,4 +30,20 @@ button {
 
 .title {
 	text-align:center;
+}
+
+.rounded {
+	border-radius: 20px;
+}
+
+.words {
+	display: inline-block;
+}
+
+.w-before {
+	float:left;
+}
+
+.w-after {
+	float:right;
 }
