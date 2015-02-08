@@ -68,6 +68,7 @@ li {
 	font-size:40pt;
 	color:#ff7f00;
 	margin-top:-40px;
+	display:block;
 }
 
 .number-img {
@@ -77,7 +78,7 @@ li {
 .qualifier {
 	font-family:avenir,'lato',sans serif;
 	font-weight:900;
-	font-size:20pt;
+	font-size:16pt;
 	color:#7c8393;
 }
 
