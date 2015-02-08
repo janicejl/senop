@@ -42,8 +42,10 @@
 
 .w-before {
 	float:left;
+	display: inline-block;
 }
 
 .w-after {
+	display: inline-block;
 	float:right;
 }
