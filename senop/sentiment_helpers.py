@@ -6,6 +6,29 @@ import datetime
 import urllib2,json
 from flask import jsonify
 
+class TwitterSen:
+  def __init__(self,sentiment=None, sentimentNum=None):
+    self.sentiment = sentiment
+    self.sentimentNum = sentimentNum
+    description = "This holds if the sentiment of a tweet is positive, negative or netural, along with a number showing intensity"
+
+  @property
+  def sentiment(self):
+    return self.__sentiment
+
+  @property
+  def sentimentNum(self):
+    return self.__sentimentNum
+
+  @sentiment.setter
+  def sentiment(self, sentimentNum):
+    if sentimentNum < -0.2:
+      self.__sentiment = "negative"
+    elif sentimentNum > 0.2:
+      self.__sentiment = "positive"
+    else:
+      self.__sentiment = "neutral"
+
 def get_tweets(search_term):
   # since 1 week ago
   week_ago = (datetime.datetime.now() - datetime.timedelta(days=7)).date()
@@ -32,3 +55,4 @@ def get_sentiment(tweets):
   response_data = json.load(response)
 
   return response_data
+
