@@ -38,6 +38,8 @@ def search():
     neutral_word_count = count_word_frequency(neutral_tweets, search_term)
     negative_word_count = count_word_frequency(negative_tweets, search_term)
 
+    app.logger.debug(positive_word_count)
+
     return jsonify(results=search_term)
 
 @app.route('/')
