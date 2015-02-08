@@ -1,6 +1,4 @@
 function checkEnter() {
- var tmp = document.getElementById("searchTerm");
-
     var keypressed = event.keyCode || event.which;
     	console.log(keypressed);
     if (keypressed == 13) {
@@ -21,7 +19,7 @@ function update(response){
 		var valeur = results.score*100;
 		$('.progress-bar').css('width', valeur+'%').attr('aria-valuenow', valeur);
 
-		$('.orange').html(results.search_term);
+		$('#search-term').html(results.search_term);
 
 		var newContent = "";
 		$.each(neg.common_words,function(word) {
@@ -53,7 +51,7 @@ function update(response){
 	}
 
   // Polling
-  var st = document.getElementById("searchTerm");
+  var st = document.getElementById("search-term");
   if (st.value.length > 0) {
     console.log('start polling.');
     setTimeout(getResults, 60000);
