@@ -152,7 +152,8 @@ prepositions = [
 "is",
 "i",
 "i'm",
-"was"
+"was",
+"gave"
 ]
 
 
