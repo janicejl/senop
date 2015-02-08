@@ -29,12 +29,14 @@ def get_tweets(search_term):
 
   for t in tweepy.Cursor(twapi.search, 
     q=search_term).items(app.config['MAX_TWEETS']):
-    twitter_results.append(t)
+    if t.lang == 'en':
+      twitter_results.append(t)
 
   return twitter_results
 
 def get_sentiment(tweets):
-  json_query = json.dumps({ 'data' : tweets })
+  json_query = json.dumps({ 'language': 'en',
+    'data' : tweets })
 
   url = 'http://www.sentiment140.com/api/bulkClassifyJson?appid=chuxtina@gmail.com'
   req = urllib2.Request(url)
