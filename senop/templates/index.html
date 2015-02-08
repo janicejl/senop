@@ -4,6 +4,7 @@
 <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />
 
 <link href='http://fonts.googleapis.com/css?family=Lato:400,900,100italic' rel='stylesheet' type='text/css'>
+
 {% endblock %}
 
 {% block body %}
@@ -48,7 +49,7 @@
 						    </div>
 						</div>
 					</div>
-					<div class="words w-after text-right col-xs-2 col-md-2 extra" id="pos">
+					<div class="words w-after text-right col-xs-2 col-md-2" id="pos">
 					</div>
 				</div>
 			</div>
@@ -58,9 +59,10 @@
 			</div>
 		</div>
 		<span class="col-md-2"></span>
+
 <div class="col-md-8">
   	<div class="row">
- 		<div class="col-md-4 icon extra">
+ 		<div class="col-md-4 icon extra animatedicon" id="tweeticon">
  			<img src="{{ url_for('static', filename='img/socialmedia.png') }}" class="img-responsive">
  		</div>
  		<div class="col-md-6 extra">
@@ -72,21 +74,21 @@
  	<div class="row filler"><div class="col-md-12"></div></div>
 
 	<div class="row">
-		<div class="col-md-2 icon extra">
+		<div class="col-md-2 icon extra animatedicon" id="positiveicon">
 			<img class="img-responsive" src="{{ url_for('static', filename='img/positive.png') }}">
 		</div>
 		<div class="col-md-2 extra">
 			<hr>
 			POSITIVES 
 		</div>
-		<div class="col-md-2 icon extra">
+		<div class="col-md-2 icon extra animatedicon" id="neutralicon">
 			<img class="img-responsive" src="{{ url_for('static', filename='img/neutral.png') }}">
 		</div>
 		<div class="col-md-2 extra">
 			<hr>
 			NEUTRALS
 		</div>
-		<div class="col-md-2 icon extra">
+		<div class="col-md-2 icon extra animatedicon" id="negativeicon">
 			<img class="img-responsive" src="{{ url_for('static', filename='img/negative.png') }}">
 		</div>
 		<div class="col-md-2 extra">
@@ -108,45 +110,21 @@
 
 	<div class="row filler"><div class="col-md-12"></div></div>
 
-	<div class="row">
- 		<div class="col-md-2 icon extra">
- 			<img src="{{ url_for('static',filename='img/problems.png') }}" class="img-responsive"></div>
- 		<div class="col-md-5 extra">
-      		<hr>
-     		<h2>PROBLEM 1</h2>
-      		Solution <i>- Reason for suggestion</em>
-    	</div>
- 		<div class="col-md-5 extra">
-    		<hr>
-      		<h2>PROBLEM 2</h2>
-      		Solution <i>- Reason for suggestion</em>
-    	</div>
-    	<div class="col-md-2 icon extra"></div>
- 		<div class="col-md-5 extra">
-      		<hr>
-      		<h2>PROBLEM 3</h2>
-      		Solution <i>- Reason for suggestion</em>
-    	</div>
-    	<div class="col-md-5 extra">
-      		<hr>
-      		<h2>PROBLEM 4</h2>
-      		Solution <i>- Reason for suggestion</em>
-    	</div>
-	</div>
-
 <div class="row filler"><div class="col-md-12"></div></div>
 
 	<div class="row">
 		<div class="col-md-2"></div>
  		<div class="col-md-3">
- 			<img src="{{ url_for('static', filename='img/amountofdata.png') }}" class="number-img img-responsive">
- 			<span class="number" id="number-of-tweets">1234</span>
+ 			<img src="{{ url_for('static', filename='img/amountofdata.png') }}" class="number-img img-responsive animatedicon" id="postsicon">
+      <span class="number" id="number-of-tweets">1234</span>
  			<span class="qualifier"># of Posts</span>
  		</div>
  		<div class="col-md-2"></div>
  		<div class="col-md-3">
- 			<img src="{{ url_for('static', filename='img/people.png') }}" class="number-img img-responsive">
+
+ 			<img src="{{ url_for('static', filename='img/people.png') }}" class="number-img img-responsive animatedicon " id="likesicon">
  			<span class="number" id="number-of-favorites">NUMBER</span>
+ 			
  			<span class="qualifier"># of Favorites</span>
  		</div>
  		<div class="col-md-2"></div>
@@ -154,8 +132,37 @@
  	<div class="row filler"><div class="col-md-12"></div></div>
 	
 </div>
+
+<script>
+	$(window).scroll(function(){
+		var scrollpos = $(window).scrollTop()
+		console.log(scrollpos)
+		if (scrollpos > 500) {
+			$("#tweeticon").addClass("animation");
+		}
+		else {
+			$("#tweeticon").removeClass("animation");
+		}
+
+		if (scrollpos > 800) {
+			$("#positiveicon, #neutralicon, #negativeicon").addClass("animation");
+		}
+		else {
+			$("#positiveicon, #neutralicon, #negativeicon").removeClass("animation");
+		}
+
+		if (scrollpos > 1400) {
+			$("#postsicon, #likesicon").addClass("animation");
+		}
+		else {
+			$("#problemicon, #likesicon").removeClass("animation");
+		}
+
+	})
+</script>
+=======
 <div class="container-fluid">
-	<div class="col-md-4">
+	<div class="col-md-2">
 		
 	</div>
 	<div class= "chart col-md-5">

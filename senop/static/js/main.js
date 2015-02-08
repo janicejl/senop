@@ -79,17 +79,18 @@ function graph(results) {
 var color = d3.scale.quantize()
     .range(["#26262b", "#7c8393", "#d6ccbf"]);
 
-var size = 600;
+var height = 600;
+var width = 950;
 
 var pack = d3.layout.pack()
     .sort(null)
-    .size([size, size])
+    .size([height, width])
     .value(function(d) { return d.count * d.count; })
     .padding(5);
 
 var svg = d3.select(".chart").append("svg")
-    .attr("width", size)
-    .attr("height", size);
+    .attr("width", width)
+    .attr("height", height);
 
   color.domain(d3.extent(results, function(d) { return d.count; }));
 
@@ -97,8 +98,8 @@ var svg = d3.select(".chart").append("svg")
       .data(pack.nodes({children: results}).slice(1))
     .enter().append("circle")
       .attr("r", function(d) { return d.count*10; })
-      .attr("cx", function(d) { return Math.random() * (600); })
-      .attr("cy", function(d) { return Math.random()*600; })
+      .attr("cx", function(d) { return Math.random() * width; })
+      .attr("cy", function(d) { return Math.random()*height; })
       .style("fill", function(d) { return color(d.count); })
     .append("title")
       .text(function(d) {
@@ -111,5 +112,13 @@ function type(d) {
   return d;
 }
 
-d3.select(self.frameElement).style("height", size + "px");
+var tooltip = d3.select("body")
+ .append("div")
+ .style("position", "absolute")
+ .style("z-index", "10")
+ .style("visibility", "hidden")
+ .text("a simple tooltip");
+
+
+d3.select(self.frameElement).style("height", height + "px");
 }
