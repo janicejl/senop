@@ -38,6 +38,8 @@ def search():
     scaled_sentiment = calculate_polarity(sentiment140_results['data'])
     app.logger.debug(scaled_sentiment)
 
+    all_tweets = \
+        [r for r in sentiment140_results['data']]
     positive_tweets = \
         [r for r in sentiment140_results['data'] if r['polarity'] == 4]
     neutral_tweets = \
@@ -48,6 +50,7 @@ def search():
     positive_word_count = count_word_frequency(positive_tweets, search_term)
     neutral_word_count = count_word_frequency(neutral_tweets, search_term)
     negative_word_count = count_word_frequency(negative_tweets, search_term)
+    all_common_word_count = count_word_frequency(all_tweets, search_term)
 
     positive_common_words = sorted(positive_word_count.items(),
         key = operator.itemgetter(1), reverse = True)[:app.config['COMMON_COUNT']]
@@ -78,6 +81,8 @@ def search():
     result_output['search_term'] = search_term
     result_output['score'] = scaled_sentiment
     result_output['mood'] = get_sentiment_phrase(scaled_sentiment)
+    result_output['word_count'] = all_common_word_count
+    result_output['numresults'] = len(all_tweets)
 
     positive_output = {}
     positive_output['common_words'] = dict(positive_common_words)
