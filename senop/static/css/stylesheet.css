@@ -102,7 +102,7 @@ li {
 
 .sentiment-container {
 	padding:0em;
-	padding-bottom:15%;
+	padding-bottom:2em;
 }
 .panel {
 	margin-top: 2em;
@@ -114,7 +114,7 @@ li {
 }
 
 .after-search {
-	padding:4em;
+	padding:2em;
 	/*display:none;*/
 }
 
@@ -149,7 +149,7 @@ li {
 }
 
 .extra {
-	padding-bottom:4em;
+	padding-bottom:3em;
 }
 
 .orange {
@@ -160,9 +160,24 @@ li {
 	margin-top:-1em;
 }
 
+.animatedicon {
+	-webkit-transition:opacity 1s;
+/*	-webkit-animation: imghide 1s;  Chrome, Safari, Opera 
+    animation: imghide 1s;*/
+	opacity:0;
+}
+
+.animatedicon.animation {
+/*	-webkit-animation: imgshow 1s;  Chrome, Safari, Opera 
+    animation: imgshow 1s;*/
+    opacity:1;
+}
+
 .explanation {
 	visibility: hidden;
 }
+
+.revealOnScroll { opacity: 0; }
 
 input {
 	height: 50px;
@@ -176,3 +191,26 @@ li {
 em {
 	font-weight:100;
 }
+
+@-webkit-keyframes imgshow {
+    0%   {top:20px; opacity: 0;}
+    100% {top:0px; opacity: 1;}
+}
+
+/* Standard syntax */
+@keyframes imgshow {
+    0%   {top:20px; opacity: 0;}
+    100% {top:0px; opacity: 1;}
+}
+
+-webkit-keyframes imghide {
+    0%   {top:20px; opacity: 1;}
+    100% {top:0px; opacity: 0;}
+}
+
+/* Standard syntax */
+@keyframes imghide {
+    0%   {top:20px; opacity: 1;}
+    100% {top:0px; opacity: 0;}
+}
+
