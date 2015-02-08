@@ -1,7 +1,8 @@
 # controller.py
 
 from . import app
-from .sentiment_helpers import get_tweets, get_sentiment
+from .sentiment_helpers import get_tweets, get_sentiment, calculate_polarity, \
+    count_word_frequency
 
 from flask import render_template, request, jsonify
 
