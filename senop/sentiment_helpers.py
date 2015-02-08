@@ -8,12 +8,12 @@ import urllib2,json
 from flask import jsonify
 
 def rescale_polarity(num):
-  return float((num - 2) * 0.5)
+  return float((num) * 0.25)
 
 def get_sentiment_phrase(sentimentNum):
-  if sentimentNum < -0.2:
+  if sentimentNum < 0.4:
     return "negative"
-  elif sentimentNum > 0.2:
+  elif sentimentNum > 0.6:
     return "positive"
   else:
     return "neutral"
@@ -50,8 +50,8 @@ def calculate_polarity(sentiment_result):
   numTweets = len(sentiment_result)
   for r in sentiment_result:
     polarity+=r['polarity']
-  polarity = float(polarity/numTweets)-2  
-  return float(polarity*0.5)
+  polarity = float(polarity/numTweets)
+  return float(polarity*0.25)
 
 def count_word_frequency(tweet_list, search_term=None):
   word_count = {}

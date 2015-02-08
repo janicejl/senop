@@ -58,13 +58,13 @@ def search():
 
     positive_tweet = sorted(positive_tweets, 
         key = lambda k: k['fav_count'], reverse = True)[0]
-    positive_tweet['polarity'] = 1
+    positive_tweet['polarity'] = rescale_polarity(positive_tweet['polarity'])
     neutral_tweet = sorted(neutral_tweets,
         key = lambda k: k['fav_count'], reverse = True)[0]
-    neutral_tweet['polarity'] = 0
+    neutral_tweet['polarity'] = rescale_polarity(neutral_tweet['polarity'])
     negative_tweet = sorted(negative_tweets, 
         key = lambda k: k['fav_count'], reverse = True)[0]
-    negative_tweet['polarity'] = -1
+    negative_tweet['polarity'] = rescale_polarity(negative_tweet['polarity'])
 
     result_output = {}
     result_output['search_term'] = search_term
