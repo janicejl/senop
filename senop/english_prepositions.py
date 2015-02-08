@@ -151,7 +151,8 @@ prepositions = [
 "onto",
 "is",
 "i",
-"i'm"
+"i'm",
+"was"
 ]
 
 
