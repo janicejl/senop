@@ -24,8 +24,19 @@ def search():
 
     app.logger.debug(sentiment140_results)
 
-    scaled_sentiment = calculate_polarity(sentiment140_queries['data'])
+    scaled_sentiment = calculate_polarity(sentiment140_results['data'])
     app.logger.debug(scaled_sentiment)
+
+    positive_tweets = \
+        [r['text'] for r in sentiment140_results['data'] if r['polarity'] == 4]
+    neutral_tweets = \
+        [r['text'] for r in sentiment140_results['data'] if r['polarity'] == 2]
+    negative_tweets = \
+        [r['text'] for r in sentiment140_results['data'] if r['polarity'] == 0]
+
+    positive_word_count = count_word_frequency(positive_tweets, search_term)
+    neutral_word_count = count_word_frequency(neutral_tweets, search_term)
+    negative_word_count = count_word_frequency(negative_tweets, search_term)
 
     return jsonify(results=search_term)
 

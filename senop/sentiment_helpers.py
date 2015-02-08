@@ -64,7 +64,19 @@ def calculate_polarity(sentiment_result):
 
   return polarity
 
-def count_word_frequency(tweet_list):
+def count_word_frequency(tweet_list, search_term=None):
   word_count = {}
+  for t in tweet_list:
+    words = t.split()
+    for w in words:
+      word = w.strip(' .,-!?#')
+      if word == 'RT':
+        continue
+      if word.startswith('@') or word.startswith('http'):
+        continue
+      if search_term and word.lower() == search_term.lower():
+        continue
+      word_lower = word.lower()
+      word_count[word_lower] = word_count.get(word_lower, 0) + 1
   return word_count
 
