@@ -45,11 +45,18 @@ function update(response){
     }
     if (pos.popular) {
 		$('#positive-tweet').html(pos.popular.text.replace(/(http:\/\/[^\s]+)/g, "<a href='$1'>$1</a>"));
-  } 
+  } else {
+    $('#positive-tweet').html('');
+  }
   if (neu.popular) {
 		$('#neutral-tweet').html(neu.popular.text.replace(/(http:\/\/[^\s]+)/g, "<a href='$1'>$1</a>"));
-  } if (neg.popular) {
+  }  else {
+    $('#neutral-tweet').html('');
+  }
+  if (neg.popular) {
 		$('#negative-tweet').html(neg.popular.text.replace(/(http:\/\/[^\s]+)/g, "<a href='$1'>$1</a>"));
+  } else {
+    $('#negative-tweet').html('');
   }
 		$('#number-of-tweets').html(results.numresults);
 		$('#number-of-favorites').html(results.numfavs);
@@ -57,6 +64,7 @@ function update(response){
 
 	}
 
+  document.getElementById('senop-explanation').style.display = 'none';
   document.getElementById('search-result-container').style.visibility = 'visible';
 
   // Polling
@@ -78,12 +86,11 @@ function getResults() {
     data : JSON.stringify(searchTerm),
     type : 'POST',
     //success : onStatusOK,
-    //failure : onStatusError
+    //failure : onStatusError d
     complete: function(response) {
     		console.log(response);
             update(response);
-            graph(response.responseJSON.results.word_count);
-            $('.after-search').display = "block";
+            graph(response.responseJSON.results.word_count); 
 		}
 	});
 }
