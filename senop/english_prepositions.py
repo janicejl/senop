@@ -153,7 +153,13 @@ prepositions = [
 "i",
 "i'm",
 "was",
-"gave"
+"gave",
+"are",
+"&",
+"i've",
+"=",
+"-",
+"/"
 ]
 
 
