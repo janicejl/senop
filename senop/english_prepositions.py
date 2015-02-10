@@ -156,7 +156,10 @@ prepositions = [
 "gave",
 "are",
 "&",
-"i've"
+"i've",
+"=",
+"-",
+"/"
 ]
 
 
