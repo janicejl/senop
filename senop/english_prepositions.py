@@ -154,7 +154,9 @@ prepositions = [
 "i'm",
 "was",
 "gave",
-"are"
+"are",
+"&",
+"i've"
 ]
 
 
