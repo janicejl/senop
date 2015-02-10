@@ -30,7 +30,7 @@ def search():
     sentiment140_queries = []
     for t in twitter_results:
       sentiment140_queries.append({
-        'text': t.text,
+        'text': t.text.encode("utf8"),
         'twitid': t.id,
         'fav_count': t.favorite_count
       });

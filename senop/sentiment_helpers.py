@@ -21,14 +21,14 @@ def get_sentiment_phrase(sentimentNum):
 def get_tweets(search_term):
   # since 1 week ago
   week_ago = (datetime.datetime.now() - datetime.timedelta(days=7)).date()
-  qualifier = ' since:%d-%d-%d' % (week_ago.year, 
+  qualifier = ' since:%d-%d-%d' % (week_ago.year,
       week_ago.month, week_ago.day)
   search_term += qualifier
   print search_term
   twitter_results = []
 
-  for t in tweepy.Cursor(twapi.search, 
-    q=search_term).items(app.config['MAX_TWEETS']):
+  for t in tweepy.Cursor(twapi.search,
+    q=search_term, lang='en').items(app.config['MAX_TWEETS']):
     if t.lang == 'en':
       twitter_results.append(t)
 
@@ -43,7 +43,7 @@ def get_sentiment(tweets):
   req.add_header('Content-Type', 'application/json')
 
   response = urllib2.urlopen(req, json_query)
-  response_data = json.load(response)
+  response_data = json.load(response, "latin-1")
 
   return response_data
 
