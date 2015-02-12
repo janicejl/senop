@@ -60,7 +60,7 @@ def count_word_frequency(tweet_list, search_term=None):
   for t in tweet_list:
     words = t['text'].split()
     for w in words:
-      word = w.strip(' .,-!?#')
+      word = w.strip(' .,-!?#&')
       if len(word) == 0:
         continue
       if word == 'RT':
