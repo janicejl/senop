@@ -107,7 +107,7 @@ var pack = d3.layout.pack()
     .size([height, width])
     .value(function(d) { return d.count * d.count; })
     .padding(5);
-
+$('.chart').html('');
 var svg = d3.select(".chart").append("svg")
     .attr("width", width)
     .attr("height", height);
